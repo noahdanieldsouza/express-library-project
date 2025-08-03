@@ -19,7 +19,9 @@ app.set('port', port);
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://nddsouza:Th1nk263!@cluster0.p5vhdmh.mongodb.net/local_Library?retryWrites=true&w=majority&appName=Cluster0";
+const dev_db_url = "mongodb+srv://nddsouza:Th1nk263!@cluster0.p5vhdmh.mongodb.net/local_Library?retryWrites=true&w=majority&appName=Cluster0";
+
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 async function connectMongoose() {
   await mongoose.connect(mongoDB);
